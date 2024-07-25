@@ -58,6 +58,18 @@ const boutonTous = document.querySelector('.btn-default')
         afficheImages(defaultFiltrees)
     })
 
+//bouton java//
+    const boutonsHover = document.querySelectorAll('.bouton');
+
+    boutonsHover.forEach(boutonHover => {
+        boutonHover.addEventListener('click',()=>{
+            boutonsHover.forEach(bouton => bouton.classList.remove('bouton-active'));
+            
+            boutonHover.classList.add('bouton-active');          
+        });
+    });
+
+
 
 
 
