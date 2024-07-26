@@ -9,7 +9,7 @@
 	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
 	<meta name="description" content="">
 	<link rel="stylesheet" href="./assets/style.css">
-	<script type="module" src="images.js"></script>
+	<script type="module" src="main.js"></script>
 </head>
 <body>
 <header>
@@ -18,12 +18,13 @@
 		<ul>
 			<li>projets</li>
 			<li>contact</li>
-			<li>login</li>
+			<li id="btn-login">login</li>
 			<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
 		</ul>
 	</nav>
 </header>
 <main>
+	<div id="before-login">
 	<section id="introduction">
 		<figure>
 			<img src="./assets/images/sophie-bluel.png" alt="">
@@ -60,6 +61,26 @@
 			<input type="submit" value="Envoyer">
 		</form>
 	</section>
+    </div>
+	<div id="login" class="hidden">
+		<h2 class="title-log">Log in</h2>
+		<ul class="list-login">
+		    <li>
+		        <label id="l-email-login" for="email">e-mail</label>
+		        <input for="email" name="email-login" id="email-login">
+	        </li>
+		    <li>
+		        <label id="l-email-password" for="password">Mot de passe</label>
+		        <input for="password" name="password-login" id="password-login">
+	        </li>
+		    <li>
+		        <button class="connexion">Se connecter</button>
+	        </li>
+		    <li>
+		        <p>mot de passe oublié</p>
+	        </li>
+	    </ul>
+	</div>
 </main>
 
 <footer>
