@@ -232,21 +232,28 @@ footer nav ul {
 	margin-bottom: 20px;
 }
 
-.list-login{
+.formulaire-login {
 	gap:20px;
 	justify-content: center;
 	flex-direction: column;
 	align-items: center;
+	display: flex;
 }
 
-.list-login {
+.title-projet{
 	display: flex;
-	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.text-projet{
+	margin-bottom: 30px;
 }
 
 .logon{
 	display: flex;
 	flex-direction: column;
+	gap:20px;
 }
 .mdp{
 	display: flex;
