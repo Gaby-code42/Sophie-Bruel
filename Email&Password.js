@@ -1,3 +1,10 @@
+function connexionSucces (data){
+
+        document.getElementById('before-login').style.display ='block';
+        document.getElementById('login').style.display = 'none';
+        document.getElementById('text-projet').style.display ='block';
+}
+
 export function Emailbutton (){
     const formulaireLogin =document.querySelector('.formulaire-login');
     formulaireLogin.addEventListener("submit",function(event){
@@ -16,14 +23,20 @@ export function Emailbutton (){
             body:chargeUtile,
             headers: { "Content-Type": "application/json" }
         })
-        .then(response => response.json())
-        
+        .then(response => {
+            if (response.status === 200) {
+              return response.json();
+            } else if (response.status === 401) {
+              throw new Error('Non autorisé. Vérifiez votre nom d\'utilisateur et votre mot de passe.');
+            } else if (response.status === 404) {
+              throw new Error('Utilisateur non trouvé.');
+            } else {
+              throw new Error('Une erreur s\'est produite. Veuillez réessayer plus tard.');
+            }
+          }) 
+          .then(data => {
+            connexionSucces(data);
+          })
     })
-    
-
-
-
-
 }
    
-       
