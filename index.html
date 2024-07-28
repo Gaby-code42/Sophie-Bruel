@@ -64,22 +64,20 @@
     </div>
 	<div id="login" class="hidden">
 		<h2 class="title-log">Log in</h2>
-		<ul class="list-login">
-		    <li>
-		        <label id="l-email-login" for="email">e-mail</label>
+		<form class="list-login">
+		        <div class="logon">
+		        <label id="l-email-login" for="email">E-mail</label>
 		        <input for="email" name="email-login" id="email-login">
-	        </li>
-		    <li>
+	            </div>
+				<div class="logon">
 		        <label id="l-email-password" for="password">Mot de passe</label>
 		        <input for="password" name="password-login" id="password-login">
-	        </li>
-		    <li>
-		        <button class="connexion">Se connecter</button>
-	        </li>
-		    <li>
+			    </div>
+				<div class="logon">
+		        <input id="connexion" type="submit" value="Se connecter">
 		        <p class="mdp">mot de passe oublié</p>
-	        </li>
-	    </ul>
+			    </div>
+	    </form>
 	</div>
 </main>
 

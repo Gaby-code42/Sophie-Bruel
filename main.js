@@ -4,6 +4,8 @@ import { setupButtons } from './bouton.js'
 
 import {loginButton} from './login.js'
 
+import { Emailbutton } from './Email&Password.js';
+
 
 const galleryFigure = document.querySelector(".gallery");
 
@@ -23,6 +25,7 @@ async function init() {
     afficheImages(ApiImages, galleryFigure);
     setupButtons(ApiImages, galleryFigure);
     loginButton();
+    Emailbutton();
 }
 
 init();

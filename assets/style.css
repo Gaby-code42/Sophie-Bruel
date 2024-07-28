@@ -239,12 +239,19 @@ footer nav ul {
 	align-items: center;
 }
 
-.list-login li {
+.list-login {
 	display: flex;
 	flex-direction: column;
 }
 
+.logon{
+	display: flex;
+	flex-direction: column;
+}
 .mdp{
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	text-decoration: underline;
 	margin-bottom: 370px;
 }
@@ -257,7 +264,7 @@ footer nav ul {
 	box-shadow: -10px 5px 10px rgba(0, 0, 0, 0.05);
 }
 
-.connexion{
+#connexion{
 	border:#1D6154 1px solid;
 	background-color: #1D6154;
 	color:white;
