@@ -4,6 +4,8 @@ const reponse = await fetch('http://localhost:5678/api/works');
 const ApiImages = await reponse.json();
     console.log(ApiImages)
 
+const modalWrapper = document.querySelector('.modal-wrapper')
+
 export function afficheImages(images){
 
     galleryFigure.textContent=""
@@ -21,6 +23,7 @@ export function afficheImages(images){
         figureElement.innerText = user.title;
         figure.appendChild(figureElement)
        
+        //creation de la modal directement dans image " a voir s'il faut vraiment faire un deuxieme json//
     }
 }
 
