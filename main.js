@@ -1,12 +1,12 @@
-import { afficheImages } from './images.js'
+import {afficheImages} from './images.js'
 
-import { setupButtons } from './bouton.js'
+import {setupButtons} from './bouton.js'
 
 import {loginButton} from './login.js'
 
-import { Emailbutton } from './Email&Password.js';
+import {EmailButton} from './Email&Password.js';
 
-import { modalbutton} from './modal.js';
+import {modalButton} from './modal.js';
 
 
 const galleryFigure = document.querySelector(".gallery");
@@ -27,8 +27,8 @@ async function init() {
     afficheImages(ApiImages, galleryFigure);
     setupButtons(ApiImages, galleryFigure);
     loginButton();
-    Emailbutton();
-    modalbutton();
+    EmailButton();
+    modalButton();
 }
 
 init();

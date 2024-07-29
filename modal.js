@@ -1,5 +1,8 @@
 let modal = null
 
+export function modalButton (){
+    
+}
 
 const openModal = function(e){
     e.preventDefault()
@@ -36,6 +39,6 @@ document.querySelectorAll('.js-modal').forEach(a=>{
 })
 
 
-export function modalbutton (){
 
-}
+
+

@@ -5,7 +5,7 @@ function connexionSucces (data, token){
         localStorage.setItem('authToken', token);
 }
 
-export function Emailbutton (){
+export function EmailButton (){
     const formulaireLogin =document.querySelector('.formulaire-login');
     formulaireLogin.addEventListener("submit",function(event){
         event.preventDefault();

@@ -1,7 +1,5 @@
 const galleryFigure = document.querySelector(".gallery");
 
-//code pour les images//
-
 const reponse = await fetch('http://localhost:5678/api/works');
 const ApiImages = await reponse.json();
     console.log(ApiImages)
