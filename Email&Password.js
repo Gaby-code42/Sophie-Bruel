@@ -39,10 +39,12 @@ export function Emailbutton (){
             if (response.status === 200) {
               return response.json();
             } else if (response.status === 401) {
-              throw new Error('Erreur dans l’identifiant ou le mot de passe');
+              document.getElementById('error-message').innerText = 'Erreur dans l’identifiant ou le mot de passe';;
             } else if (response.status === 404) {
-              throw new Error('Erreur dans l’identifiant ou le mot de passe');
+              document.getElementById('error-message').innerText = 'Erreur dans l’identifiant ou le mot de passe';
             } else {
+
+
               throw new Error('Une erreur s\'est produite. Veuillez réessayer plus tard.');
             }
           }) 

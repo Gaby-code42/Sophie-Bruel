@@ -6,6 +6,8 @@ import {loginButton} from './login.js'
 
 import { Emailbutton } from './Email&Password.js';
 
+import { modalbutton} from './modal.js';
+
 
 const galleryFigure = document.querySelector(".gallery");
 
@@ -26,6 +28,7 @@ async function init() {
     setupButtons(ApiImages, galleryFigure);
     loginButton();
     Emailbutton();
+    modalbutton();
 }
 
 init();
