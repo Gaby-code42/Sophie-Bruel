@@ -59,7 +59,7 @@ const stopPropagation = function(e){
 function connexionSucces(data, token){
         document.getElementById('before-login').style.display ='block';
         document.getElementById('login').style.display = 'none';
-        localStorage.setItem('authToken', token);
+        sessionStorage.setItem('authToken', token);
         editButton();
 }
 
