@@ -28,7 +28,6 @@ async function init() {
     setupButtons(ApiImages, galleryFigure);
     loginButton();
     EmailButton();
-    modalButton();
 }
 
 init();
