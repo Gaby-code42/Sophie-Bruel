@@ -28,11 +28,10 @@ function connexionSucces(data, token){
   editButton();
 }
 
-let modal = null
-
 export function modalButton (){
 }
 
+let modal = null
 const openModal = function(e){
     e.preventDefault()
     const target = document.querySelector(e.target.getAttribute('href'))
@@ -40,7 +39,8 @@ const openModal = function(e){
     target.removeAttribute('aria-hidden')
     target.setAttribute('aria-modal', 'true')
     modal = target
-    modal.addEventListener('click',closeModal)
+    //modal.addEventListener('click',closeModal)
+    modal.querySelector('.js-modal-close').addEventListener('click',closeModal)
     
 }
 
@@ -50,8 +50,10 @@ const closeModal = function(e){
     modal.style.display = "none"
     modal.setAttribute('aria-hidden','true')
     modal.removeAttribute('aria-modal')
-    modal.removeEventListener('click',closeModal)
+    //modal.removeEventListener('click',closeModal)
+    modal.querySelector('.js-modal-close').removeEventListener('click',closeModal)
     modal = null
+
 
 }
 
