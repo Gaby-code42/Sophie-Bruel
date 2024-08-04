@@ -21,17 +21,17 @@ function editButton(){
 })
 }
 
-function connexionSucces(data, token){
-  document.getElementById('before-login').style.display ='block';
-  document.getElementById('login').style.display = 'none';
-  sessionStorage.setItem('authToken', token);
-  editButton();
-}
-
 export function modalButton (){
+  const modalWrapper = document.querySelector('.modal-wrapper')    
+  const buttonClose = document.createElement('button')
+  
+  buttonClose.innerHTML='<i class="fa-solid fa-xmark"></i>';
+  buttonClose.classList.add('js-modal-close')
+  modalWrapper.appendChild(buttonClose)      
 }
 
 let modal = null
+
 const openModal = function(e){
     e.preventDefault()
     const target = document.querySelector(e.target.getAttribute('href'))
@@ -39,8 +39,11 @@ const openModal = function(e){
     target.removeAttribute('aria-hidden')
     target.setAttribute('aria-modal', 'true')
     modal = target
-    //modal.addEventListener('click',closeModal)
+    modal.addEventListener('click',closeModal)
     modal.querySelector('.js-modal-close').addEventListener('click',closeModal)
+    modal.querySelector('.js-modal-stop').addEventListener('click',stopPropagation)
+
+    
     
 }
 
@@ -50,24 +53,24 @@ const closeModal = function(e){
     modal.style.display = "none"
     modal.setAttribute('aria-hidden','true')
     modal.removeAttribute('aria-modal')
-    //modal.removeEventListener('click',closeModal)
+    modal.removeEventListener('click',closeModal)
     modal.querySelector('.js-modal-close').removeEventListener('click',closeModal)
+    modal.querySelector('.js-modal-stop').removeEventListener('click',stopPropagation)
     modal = null
+}
 
-
+const stopPropagation=function(e){
+  e.stopPropagation()
 }
 
 
 
-
-
-
-
-
-
-
-
-
+function connexionSucces(data, token){
+  document.getElementById('before-login').style.display ='block';
+  document.getElementById('login').style.display = 'none';
+  sessionStorage.setItem('authToken', token);
+  editButton();
+}
 
 export function EmailButton(){
     const formulaireLogin =document.querySelector('.formulaire-login');

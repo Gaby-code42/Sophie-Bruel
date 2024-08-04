@@ -1,27 +1,17 @@
+import { modalButton } from "./formulaire";
+
 //<button class="js-modal-close"><i class="fa-solid fa-xmark"></i></button>
 const reponse = await fetch('http://localhost:5678/api/works');
 const ApiImages = await reponse.json();
-
-
-
 const modalWrapper = document.querySelector('.modal-wrapper')
 
-export function modalButton (){
-    const modalWrapper = document.querySelector('.modal-wrapper')
+export function afficheImages(images){
+
     const textModal = document.createElement('p')
-    const buttonClose = document.createElement('button')
-    
-    buttonClose.innerHTML='<i class="fa-solid fa-xmark"></i>';
-    buttonClose.classList.add('js-modal-close')
-    modalWrapper.appendChild(buttonClose)
 
     textModal.innerText='Galerie photo'
     modalWrapper.appendChild(textModal)
     textModal.classList.add('galerie-photo')
-}
-
-export function afficheImages(images){
-    modalButton();
 
     const modalImgList = document.createElement('div')
     modalImgList.classList.add('modal-content')
@@ -49,14 +39,37 @@ export function afficheImages(images){
     btnAjout.classList.add('modal-button-ajout')
     btnAjout.innerText="Ajouter une photo"
     modalWrapper.appendChild(btnAjout)
+
 }
 
 afficheImages(ApiImages)
 
+export function swapModal (){
+
+    
+
+    const buttonSwap = document.querySelector('.modal-button-ajout')
+    buttonSwap.addEventListener('click',function(){
+
+        modalWrapper.textContent=''
+         
+                
+        const textModalAjout = document.createElement('p')
+        textModalAjout.innerText='Ajout photo'
+        modalWrapper.appendChild(textModalAjout)
+        textModalAjout.classList.add('photo-ajout')
+
+        
+
+        
+    
+    })
 
 
 
 
+
+}
 
 
 

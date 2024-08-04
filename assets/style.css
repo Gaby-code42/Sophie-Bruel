@@ -313,7 +313,7 @@ footer nav ul {
 	background-color: white;
 }
 
-.galerie-photo{
+.galerie-photo, .photo-ajout{
 	font-size:26px;
 	display: flex;
 	justify-content: center;
