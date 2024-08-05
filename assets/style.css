@@ -323,7 +323,7 @@ footer nav ul {
 	background-color: white;
 }
 
-.galerie-photo, .photo-ajout{
+.galerie-photo{
 	font-size:26px;
 	display: flex;
 	justify-content: center;
@@ -395,27 +395,117 @@ footer nav ul {
 }
 
 /*zone modal2*/
+.fa-image{
+	margin-top: 20px;
+}
+.fa-regular{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 60px;
+}
+
+.under-uploadButton{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 10px;
+}
+
 .form-container {
 	display: flex;
-	flex-direction: column;
-	align-items: flex-start; /* Aligne les éléments à gauche */
-	gap: 10px; /* Espacement entre les éléments du formulaire */
-	max-width: 300px; /* Ajustez la largeur maximale du formulaire selon vos besoins */
-	margin: auto; /* Centrer le formulaire dans le conteneur modal */
+	flex-direction: column; 
+	border:1px solid black;
+	border-radius: 5px;
   }
   
 .upload-button{
-	display: block;
-    margin: 20px auto; 
-    padding: 10px 63px;
-	margin-top: 76px;
-    background-color: #1D6154;
-    color: white;
+	display: flex;
+    align-items: center;
+	justify-content: center;
+	margin-left: auto;
+	margin-right: auto;  
+	padding: 11px 33px;
+    background-color: #CBD6DC;
+    color: #306685;
     border: none;
     border-radius: 50px; 
     font-size: 14px;
 }
 
-.form-container input[type="file"] {
+.photo-button input[type="file"] {
 	display: none; /* Cacher l'input de type file par défaut */
+}
+.form-part{
+	display: flex;
+	position: relative;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 0px 105px;
+	gap:30px;
+}
+
+.form-part::before{
+	content: '';
+    position: absolute;
+    border-bottom: 1px #b3b3b3 solid;
+    right: 0;
+    left: 0;
+	bottom:70px;
+    width: calc(100% - 210px); /* 2 * 105px for left and right padding */
+    margin: 0 auto;
+}
+
+.modal-ajout{
+	display:none;
+}
+
+.form-catTitle{
+	display: flex;
+	flex-direction: column;
+}
+
+#title{
+	width: 420px;
+	height: 50px;
+	padding: 0;
+	font-size: 14px;
+	border: none;
+	box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
+}
+
+#category{
+	width: 420px;
+	height: 50px;
+	font-size: 14px;
+	box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
+	border:none;
+}
+
+.submit-button{
+	border-radius: 50px;
+	background-color: #A7A7A7;
+	color:white;
+	border:none;
+	padding: 10.38px 98.25px;
+	margin-top: 50px;
+}
+
+.photo-ajout{
+	font-size:26px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 50px;
+	margin-bottom: 30px;
+}
+
+.photo-button{
+	background-color: #E8F1F6;
+	height: 169px;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	gap:10px;
 }

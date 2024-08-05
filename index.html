@@ -46,25 +46,31 @@
 					<div>
 					<button class='js-modal-close'><i class="fa-solid fa-xmark"></i></button>
 				    </div>
-
-					<form class="form-container">
-						<label for="photoUpload" class="upload-button">Ajouter photo</label>
-						<input type="file" accept="image/*" id="photoUpload" class="photo-upload">
+					<div class="form-part modal-ajout">
+					<p class='photo-ajout'>Ajout photo</p>
+					<form class='photo-button'>
+						<p><i class="fa-regular fa-image" style="color: #a3a3a3;"></i></p>
+						<label for="photoUpload" class="upload-button">+ Ajouter photo</label>
+						<input type="file" accept=".jpg, .jpeg, .png" id="photoUpload" class="photo-upload">
+						<p class="under-uploadButton">jpg, png : 4mo max</p>
 					</form>
-					<div class="form-field">
+					<div class="form-catTitle">
 						<label for="title">Titre :</label>
-						<input type="text" id="title" name="title" placeholder="Entrez le titre" required>
+						<input type="text" id="title" name="title"  required>
 					</div>
-					<div class="form-field">
+					<div class="form-catTitle">
 						<label for="category">Catégorie :</label>
 						<select id="category" name="category" required>
-							<option value="">Sélectionnez une catégorie</option>
-							<option value="nature">Nature</option>
-							<option value="architecture">Architecture</option>
-							<option value="animaux">Animaux</option>
-							<option value="autre">Autre</option>
+							<option value=""></option>
+							<option value="Objets">Objets</option>
+							<option value="Appartements">Appartements</option>
+							<option value="Hotels & restaurants">Hotels & restaurants</option>
 						</select>
 					</div>
+					    <div class="form-catTitle">
+					        <button type="submit" class="submit-button">Valider</button>
+				        </div>
+				    </div>
 			    </div>
 		    </aside>
 	    </div>

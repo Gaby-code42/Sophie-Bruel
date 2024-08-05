@@ -8,7 +8,7 @@ const modalWrapper = document.querySelector('.modal-wrapper')
 
 export function afficheImages(images){
     
-    modalButton();
+    modalButton();    
 
     const buttonReturn = document.createElement('button')
     buttonReturn.innerHTML='<i class="fa-solid fa-arrow-left">'
@@ -24,8 +24,7 @@ export function afficheImages(images){
     modalImgList.classList.add('modal-content','hidden-mod')
     modalWrapper.appendChild(modalImgList)
 
-    for (const user of images) {
-        
+    for (const user of images) {       
         
         const figureModal = document.createElement('div')
         figureModal.classList.add('image-container','hidden-mod')
@@ -53,7 +52,10 @@ afficheImages(ApiImages)
 
 export function swapModal() {
     const buttonSwap = document.querySelector('.modal-button-ajout');
-    buttonSwap.addEventListener('click', function() {        
+    buttonSwap.addEventListener('click', function() { 
+        
+        modalWrapper.style.height = '670px';
+        
         const elementsToHide = document.querySelectorAll('.hidden-mod');
         elementsToHide.forEach(element => {
             element.style.display = 'none';
@@ -67,6 +69,8 @@ export function swapModal() {
             const elementsToHide = document.querySelectorAll('.hidden-mod');
                 elementsToHide.forEach(element => {
                 element.style.display = 'flex';
+
+        
         })
         })
     })
@@ -80,6 +84,9 @@ export function swapModal() {
                 const showHideElements = document.querySelectorAll('.modal-ajout')
                 showHideElements.forEach(element => {
                     element.style.display = 'none';})
+                
+
+                    modalWrapper.style.height = '680px';
     })
 
 
