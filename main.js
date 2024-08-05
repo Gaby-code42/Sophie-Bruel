@@ -2,13 +2,13 @@ import {afficheImages} from './images.js'
 
 import {setupButtons} from './bouton.js'
 
-import { EmailButton } from './formulaire.js';
-
-import {modalButton} from './formulaire.js';
+import { EmailButton} from './formulaire.js'
 
 import { swapModal } from './modal.js';
 
 import { loginButton } from './login.js';
+
+import { modalButton } from './croixmodal.js';
 
 
 
@@ -30,9 +30,9 @@ async function init() {
     
     afficheImages(ApiImages, galleryFigure);
     setupButtons(ApiImages, galleryFigure);
+    modalButton();
     EmailButton();
     loginButton();    
-    modalButton();
     swapModal();
 }
 

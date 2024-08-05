@@ -280,7 +280,7 @@ footer nav ul {
 	font-size: 14px;
 	padding: 8px 38px;
 }
-/*zone de modal*/
+/*zone de modal 1*/ 
 .modal{
 	display: flex;
 	align-items: center;
@@ -302,6 +302,16 @@ footer nav ul {
 	background-color:white;
 	border-radius: 10px;
 	
+}
+
+.js-modal-return {
+	position: absolute;
+	font-size: 18px;
+	left:24px;
+	top:24px;
+	border:none;
+	background-color: white;
+	display:none;
 }
 
 .js-modal-close {
@@ -382,4 +392,30 @@ footer nav ul {
 .js-modal {
 	text-decoration: none;
 	color: black;
+}
+
+/*zone modal2*/
+.form-container {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start; /* Aligne les éléments à gauche */
+	gap: 10px; /* Espacement entre les éléments du formulaire */
+	max-width: 300px; /* Ajustez la largeur maximale du formulaire selon vos besoins */
+	margin: auto; /* Centrer le formulaire dans le conteneur modal */
+  }
+  
+.upload-button{
+	display: block;
+    margin: 20px auto; 
+    padding: 10px 63px;
+	margin-top: 76px;
+    background-color: #1D6154;
+    color: white;
+    border: none;
+    border-radius: 50px; 
+    font-size: 14px;
+}
+
+.form-container input[type="file"] {
+	display: none; /* Cacher l'input de type file par défaut */
 }

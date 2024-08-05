@@ -43,6 +43,28 @@
 		<div class="admin-action"></div>
 		    <aside id="modal1" class="modal" aria-hidden="true" style="display:none;">
 			    <div class="modal-wrapper js-modal-stop">
+					<div>
+					<button class='js-modal-close'><i class="fa-solid fa-xmark"></i></button>
+				    </div>
+
+					<form class="form-container">
+						<label for="photoUpload" class="upload-button">Ajouter photo</label>
+						<input type="file" accept="image/*" id="photoUpload" class="photo-upload">
+					</form>
+					<div class="form-field">
+						<label for="title">Titre :</label>
+						<input type="text" id="title" name="title" placeholder="Entrez le titre" required>
+					</div>
+					<div class="form-field">
+						<label for="category">Catégorie :</label>
+						<select id="category" name="category" required>
+							<option value="">Sélectionnez une catégorie</option>
+							<option value="nature">Nature</option>
+							<option value="architecture">Architecture</option>
+							<option value="animaux">Animaux</option>
+							<option value="autre">Autre</option>
+						</select>
+					</div>
 			    </div>
 		    </aside>
 	    </div>
