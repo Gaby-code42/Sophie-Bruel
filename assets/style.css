@@ -509,3 +509,10 @@ footer nav ul {
 	flex-direction: column;
 	gap:10px;
 }
+
+.photo-button img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; /* Assurez-vous que l'image s'ajuste correctement */
+    display: block;
+}

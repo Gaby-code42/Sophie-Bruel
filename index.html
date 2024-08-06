@@ -10,7 +10,7 @@
 	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
 	<meta name="description" content="">
 	<link rel="stylesheet" href="./assets/style.css">
-	<script type="module" src="main.js"></script>
+	<script  type="module" src="main.js" defer></script>
 </head>
 <body>
 <header>
@@ -43,12 +43,11 @@
 		<div class="admin-action"></div>
 		    <aside id="modal1" class="modal" aria-hidden="true" style="display:none;">
 			    <div class="modal-wrapper js-modal-stop">
-					<div>
-					<button class='js-modal-close'><i class="fa-solid fa-xmark"></i></button>
-				    </div>
+                    <button class='js-modal-close'><i class="fa-solid fa-xmark"></i></button>
+				    
 					<div class="form-part modal-ajout">
 					<p class='photo-ajout'>Ajout photo</p>
-					<form class='photo-button'>
+					<form class='photo-button' id="changement-img">
 						<p><i class="fa-regular fa-image" style="color: #a3a3a3;"></i></p>
 						<label for="photoUpload" class="upload-button">+ Ajouter photo</label>
 						<input type="file" accept=".jpg, .jpeg, .png" id="photoUpload" class="photo-upload">
