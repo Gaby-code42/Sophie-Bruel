@@ -1,6 +1,5 @@
 import { modalButton } from './croixmodal.js';
 
-//<button class="js-modal-close"><i class="fa-solid fa-xmark"></i></button>
 const reponse = await fetch('http://localhost:5678/api/works');
 const ApiImages = await reponse.json();
 const modalWrapper = document.querySelector('.modal-wrapper')
@@ -37,14 +36,59 @@ export function afficheImages(images){
                 
         const imageModal = document.createElement('img');
         imageModal.src = user.imageUrl
+        imageModal.id = user.id
         imageModal.classList.add('image-modal','hidden-mod')
-        figureModal.appendChild(imageModal)
+        figureModal.appendChild(imageModal)     
+
+        
+
+        btnSupprimer.addEventListener('click',function(){
+            console.log('click')
+            supprimerImage(user.id);
+        })
     }
 
+    //suppression image//
+
+    async function supprimerImage(imageId) {
+        const token = sessionStorage.getItem('authToken'); 
+    
+            const reponseDelete = await fetch(`http://localhost:5678/api/works/${imageId}`, {
+                method: 'DELETE',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                }
+            });
+    
+            if (reponseDelete.ok) {
+                console.log('Image supprimée avec succès');
+            } else if (reponseDelete.status === 401) {
+                console.log('Non autorisé');
+            } else if (reponseDelete.status === 404) {
+                console.log('Image non trouvée');
+            } else {
+                console.log('Erreur lors de la suppression de l\'image');
+            }
+    
+            const reponseImages = await fetch('http://localhost:5678/api/works');
+            const ApiImages = await reponseImages.json();
+            afficheImages(ApiImages);
+    
+    }
+    
     const btnAjout = document.createElement('button')
-    btnAjout.classList.add('modal-button-ajout','hidden-mod')
-    btnAjout.innerText="Ajouter une photo"
-    modalWrapper.appendChild(btnAjout)
+        btnAjout.classList.add('modal-button-ajout','hidden-mod')
+        btnAjout.innerText="Ajouter une photo"
+        modalWrapper.appendChild(btnAjout)
+
+    const btnClose = document.querySelector(".js-modal-close")
+        btnClose.addEventListener('click',function(){
+            const elementsToHide = document.querySelectorAll('.hidden-mod');
+                elementsToHide.forEach(element => {
+                element.style.display = 'flex'; 
+            })
+        })
 
 }
 
@@ -52,45 +96,75 @@ afficheImages(ApiImages)
 
 export function swapModal() {
     const buttonSwap = document.querySelector('.modal-button-ajout');
-    buttonSwap.addEventListener('click', function() { 
-        
+    const btnClose = document.querySelector('.js-modal-close');
+    const buttonReturn = document.querySelector('.js-modal-return');
+
+    buttonSwap.addEventListener('click', function() {
         modalWrapper.style.height = '670px';
-        
+
         const elementsToHide = document.querySelectorAll('.hidden-mod');
         elementsToHide.forEach(element => {
             element.style.display = 'none';
-        
-        const showHideElements = document.querySelectorAll('.modal-ajout')
+        });
+
+        const showHideElements = document.querySelectorAll('.modal-ajout');
         showHideElements.forEach(element => {
             element.style.display = 'flex';
+        });
+    });
 
-        const btnClose = document.querySelector(".js-modal-close")
-            btnClose.addEventListener('click',function(){
-            const elementsToHide = document.querySelectorAll('.hidden-mod');
-                elementsToHide.forEach(element => {
+    if (btnClose) {
+        btnClose.addEventListener('click', function() {
+            console.log('click')
+            const elementsToShow = document.querySelectorAll('.hidden-mod');
+            elementsToShow.forEach(element => {
                 element.style.display = 'flex';
+            });
+            const elementsToHide = document.querySelectorAll('.modal-ajout');
+            elementsToHide.forEach(element => {
+                element.style.display = 'none';
+            });
+        });
+    }
 
-        
-        })
-        })
-    })
-
-    const buttonReturn = document.querySelector('.js-modal-return')
-    buttonReturn.addEventListener('click',function(){
-        const elementsToHide = document.querySelectorAll('.hidden-mod');
-                elementsToHide.forEach(element => {
-                element.style.display = 'flex';})
-        
-                const showHideElements = document.querySelectorAll('.modal-ajout')
-                showHideElements.forEach(element => {
-                    element.style.display = 'none';})
-                
-
-                    modalWrapper.style.height = '680px';
-    })
+    if (buttonReturn) {
+        buttonReturn.addEventListener('click', function() {
+            const elementsToShow = document.querySelectorAll('.hidden-mod');
+            elementsToShow.forEach(element => {
+                element.style.display = 'flex';
+            });
+            const elementsToHide = document.querySelectorAll('.modal-ajout');
+            elementsToHide.forEach(element => {
+                element.style.display = 'none';
+            });
+            modalWrapper.style.height = '680px';
+        });
+    }
+}
 
 
-})
-})
-} 
+
+
+
+
+
+//a finir plus tard//
+
+document.getElementById('photoUpload').addEventListener('change',function(event){
+    const clickImg = event.target.files[0];
+    const fileRead = new FileReader();
+    const changementImg=document.getElementById('changement-img')
+
+    fileRead.onload = function(e){
+        const imgAjoutModal = document.createElement('img')
+            imgAjoutModal.src = e.target.result;
+            changementImg.innerHTML='';
+            changementImg.appendChild(imgAjoutModal);
+            
+        }
+        if (clickImg) {
+            fileRead.readAsDataURL(clickImg);
+        }
+        }
+    )
     
