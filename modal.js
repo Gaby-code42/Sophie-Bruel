@@ -4,7 +4,6 @@ const reponse = await fetch('http://localhost:5678/api/works');
 const ApiImages = await reponse.json();
 const modalWrapper = document.querySelector('.modal-wrapper')
 
-
 export function afficheImages(images){
     
     modalButton();    
@@ -13,6 +12,12 @@ export function afficheImages(images){
     buttonReturn.innerHTML='<i class="fa-solid fa-arrow-left">'
     buttonReturn.classList.add('js-modal-return','modal-ajout')
     modalWrapper.appendChild(buttonReturn)
+
+    const btnClose = document.createElement('button')
+    btnClose.classList.add('js-modal-close')
+    btnClose.id='close-modal'
+    btnClose.innerHTML='<i class="fa-solid fa-xmark">'
+    modalWrapper.appendChild(btnClose)
 
     const textModal = document.createElement('p')
     textModal.innerText='Galerie photo'
@@ -39,8 +44,6 @@ export function afficheImages(images){
         imageModal.id = user.id
         imageModal.classList.add('image-modal','hidden-mod')
         figureModal.appendChild(imageModal)     
-
-        
 
         btnSupprimer.addEventListener('click',function(){
             console.log('click')
@@ -82,22 +85,15 @@ export function afficheImages(images){
         btnAjout.innerText="Ajouter une photo"
         modalWrapper.appendChild(btnAjout)
 
-    const btnClose = document.querySelector(".js-modal-close")
-        btnClose.addEventListener('click',function(){
-            const elementsToHide = document.querySelectorAll('.hidden-mod');
-                elementsToHide.forEach(element => {
-                element.style.display = 'flex'; 
-            })
-        })
-
 }
 
 afficheImages(ApiImages)
 
 export function swapModal() {
+       
     const buttonSwap = document.querySelector('.modal-button-ajout');
-    const btnClose = document.querySelector('.js-modal-close');
     const buttonReturn = document.querySelector('.js-modal-return');
+    
 
     buttonSwap.addEventListener('click', function() {
         modalWrapper.style.height = '670px';
@@ -113,21 +109,6 @@ export function swapModal() {
         });
     });
 
-    if (btnClose) {
-        btnClose.addEventListener('click', function() {
-            console.log('click')
-            const elementsToShow = document.querySelectorAll('.hidden-mod');
-            elementsToShow.forEach(element => {
-                element.style.display = 'flex';
-            });
-            const elementsToHide = document.querySelectorAll('.modal-ajout');
-            elementsToHide.forEach(element => {
-                element.style.display = 'none';
-            });
-        });
-    }
-
-    if (buttonReturn) {
         buttonReturn.addEventListener('click', function() {
             const elementsToShow = document.querySelectorAll('.hidden-mod');
             elementsToShow.forEach(element => {
@@ -140,15 +121,6 @@ export function swapModal() {
             modalWrapper.style.height = '680px';
         });
     }
-}
-
-
-
-
-
-
-
-//a finir plus tard//
 
 document.getElementById('photoUpload').addEventListener('change',function(event){
     const clickImg = event.target.files[0];
