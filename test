@@ -1,0 +1,25 @@
+const categoryButton = document.querySelector('.form-catTitle')
+    
+    const select = document.createElement('select')
+    select.id ='category'
+    select.name ='category'
+
+    async function categoryOptions() {
+        const response = await fetch(URL)
+        const options = await response.json();
+
+        options.forEach(option =>{
+            const categorie = document.createElement('option')
+            categorie.value = option.
+            categorie.text = option.
+            select.appendChild(categorie)
+        })
+
+        categoryButton.appendChild(select)
+    }
+    categoryOptions();
+
+    
+   
+
+

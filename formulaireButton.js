@@ -1,35 +1,40 @@
 const changementImg = document.getElementById('changement-img');
 let originalContent = changementImg.innerHTML
 
-const response = await fetch('http://localhost:5678/api/works')
-const formSelect = await response.json();
-        if (response.ok){console.log('bob')}
+
+    
 
 
-export function formulaireButton (){
+export async function formulaireButton (){
+    const response = await fetch('http://localhost:5678/api/works')
+    const works = await response.json()
+    
+    const uniqueCategories = new Set();
 
-    async function categoryOptions() {
-        const response = await fetch(URL)
-        if (!response.ok){console.log("c'est bon frero j'ai les infos")}
-        
-    }
-    categoryOptions()
+    works.forEach(work => {
+        uniqueCategories.add(work.category.name);
+      });
+      
+    console.log(uniqueCategories)
 
+          
 
-
+    
+    
     const photoButton = document.querySelector('.photo-button')
 
     const inputImg = document.createElement('input')
-    inputImg.type='file'
-    inputImg.accept='.jpg, .jpeg, .png'
-    inputImg.classList.add('photo-upload')
-    inputImg.id='photoUpload'
-    photoButton.appendChild(inputImg)
+        inputImg.type='file'
+        inputImg.accept='.jpg, .jpeg, .png'
+        inputImg.classList.add('photo-upload')
+        inputImg.id='photoUpload'
+        photoButton.appendChild(inputImg)
 
 
-inputImg.addEventListener('change', function(event) {
-    const clickImg = event.target.files[0]
-    const fileRead = new FileReader()
+    inputImg.addEventListener('change', function(event) {
+
+        const clickImg = event.target.files[0]
+        const fileRead = new FileReader()
     
 
     fileRead.onload = function(e) {
@@ -60,5 +65,4 @@ inputImg.addEventListener('change', function(event) {
     inputTitle.name = 'title'
     titleButton.appendChild(inputTitle)
     
-   
 }
