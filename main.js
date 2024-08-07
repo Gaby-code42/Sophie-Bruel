@@ -1,16 +1,14 @@
-import {afficheImages} from './images.js'
+import {afficheImages} from './triage.js'
 
-import {setupButtons} from './bouton.js'
+import {setupButtons} from './triage.js'
 
-import { EmailButton} from './formulaire.js'
-
-import { swapModal } from './modal.js';
-
-import { loginButton } from './login.js';
+import { swapModal} from './modal.js';
 
 import { modalButton } from './croixmodal.js';
 
-import { formulaireButton } from './formulaireButton.js';
+import { formulaireButton } from './Ajoutprojet.js';
+
+import {EmailButton, loginButton} from './login.js'
 
 const galleryFigure = document.querySelector(".gallery");
 

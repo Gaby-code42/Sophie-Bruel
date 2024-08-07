@@ -16,7 +16,7 @@ export async function formulaireButton() {
     const response = await fetch('http://localhost:5678/api/works');
     const works = await response.json();
 
-    //formulaire categories//
+    //formulaire categories//  je dois créer le label de facon dynamique 
 
     const uniqueCategories = new Set();
     works.forEach(work => {
@@ -52,7 +52,34 @@ export async function formulaireButton() {
         checkFormCompletion();
     });
 
-    // formulaire Image //
+    // formulaire titre //  je dois créer le label de facon dynamique 
+
+    const titleButton = document.querySelector('.form-catTitle');
+    const inputTitleElement = document.createElement('input');
+    inputTitleElement.type = 'text';
+    inputTitleElement.id = 'title';
+    inputTitleElement.name = 'title';
+    titleButton.appendChild(inputTitleElement);
+
+    inputTitleElement.addEventListener('change', (event) => {
+        inputTitle = event.target.value;
+        isTitleValid = !!inputTitle;
+        checkFormCompletion();
+    });
+
+    // permet de valider mon if //
+
+    function checkFormCompletion() {
+        const submitButton = document.getElementById('form-validation');
+        if (isImageValid && isCategoryValid && isTitleValid) {
+            submitButton.disabled = false;
+        } else {
+            submitButton.disabled = true;
+        }
+    }
+
+    // formulaire Image //  je dois créer le label de facon dynamique 
+
     const photoButton = document.querySelector('.photo-button');
     const inputImg = document.createElement('input');
     inputImg.type = 'file';
@@ -75,7 +102,10 @@ export async function formulaireButton() {
                 inputImg.click();
             });
 
-            isImageValid = !!imgAjoutModal.src;
+            isImageValid = !!imgAjoutModal.src; // permet de transformer imgAjoutModal.scr en booleen . bon a savoir //
+
+            
+
             checkFormCompletion();
         };
 
@@ -86,29 +116,6 @@ export async function formulaireButton() {
             formulaireButton();
         }
     });
-
-    // formulaire titre //
-    const titleButton = document.querySelector('.form-catTitle');
-    const inputTitleElement = document.createElement('input');
-    inputTitleElement.type = 'text';
-    inputTitleElement.id = 'title';
-    inputTitleElement.name = 'title';
-    titleButton.appendChild(inputTitleElement);
-
-    inputTitleElement.addEventListener('change', (event) => {
-        inputTitle = event.target.value;
-        isTitleValid = !!inputTitle;
-        checkFormCompletion();
-    });
-
-    function checkFormCompletion() {
-        const submitButton = document.getElementById('form-validation');
-        if (isImageValid && isCategoryValid && isTitleValid) {
-            submitButton.disabled = false;
-        } else {
-            submitButton.disabled = true;
-        }
-    }
     
     //bouton submit//
 
@@ -121,10 +128,41 @@ export async function formulaireButton() {
     inputSubmit.disabled = true;
     submitCase.appendChild(inputSubmit);
 
-    inputSubmit.addEventListener('click', () => {
+    inputSubmit.addEventListener('click', async () => {
         if (isImageValid && isCategoryValid && isTitleValid) {
-            console.log("frero ca marche");
-            
+            await submitForm();
         }
-    });
+    })
+   
+        async function submitForm() {
+
+            const token = sessionStorage.getItem('authToken');
+
+            const imageFile = inputImg.files[0];
+             
+            console.log(imageFile)
+
+            const formPost = {
+                title: inputTitle,
+                category: selectedCategory,
+                image: imageFile,
+            }
+
+
+
+            const ChargeUtileAjout = JSON.stringify(formPost)
+        
+             {
+                const response = await fetch('http://localhost:5678/api/works', {
+                        method: 'POST',
+                        headers:{
+                            'Authorization': `Bearer ${token}`
+                        },
+                        body: ChargeUtileAjout
+
+                });
+                const data = await response.json();
+                console.log(data);
+                }
+}    
 }

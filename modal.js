@@ -125,6 +125,11 @@ export function swapModal() {
             modalWrapper.style.height = '680px';
              
         });
+
+        
+        
+          
+          
     }
 
     
