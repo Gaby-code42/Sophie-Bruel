@@ -44,29 +44,25 @@
 		    <aside id="modal1" class="modal" aria-hidden="true" style="display:none;">
 			    <div class="modal-wrapper js-modal-stop">
                     
-					<div class="form-part modal-ajout">
+					<div class="form-part modal-ajout" id="form-part">
 					<p class='photo-ajout'>Ajout photo</p>
 					<form class='photo-button' id="changement-img">
 						<p><i class="fa-regular fa-image" style="color: #a3a3a3;"></i></p>
 						<label for="photoUpload" class="upload-button">+ Ajouter photo</label>
-						<input type="file" accept=".jpg, .jpeg, .png" id="photoUpload" class="photo-upload">
 						<p class="under-uploadButton">jpg, png : 4mo max</p>
+						<p id="photoError" class="error-message"></p>
 					</form>
 					<div class="form-catTitle">
-						<label for="title">Titre :</label>
-						<input type="text" id="title" name="title"  required>
+						<label for="title-form">Titre :</label>
+						<p id="titleError" class="error-message"></p>
 					</div>
 					<div class="form-catTitle">
 						<label for="category">Catégorie :</label>
-						<select id="category" name="category" required>
-							<option value=""></option>
-							<option value="Objets">Objets</option>
-							<option value="Appartements">Appartements</option>
-							<option value="Hotels & restaurants">Hotels & restaurants</option>
-						</select>
+						
+						<p id="categoryError" class="error-message"></p>
 					</div>
 					    <div class="form-catTitle">
-					        <button type="submit" class="submit-button">Valider</button>
+					        <button type="submit" class="submit-button" id="form-validation">Valider</button>
 				        </div>
 				    </div>
 			    </div>

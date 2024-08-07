@@ -10,8 +10,7 @@ import { loginButton } from './login.js';
 
 import { modalButton } from './croixmodal.js';
 
-
-
+import { formulaireButton } from './formulaireButton.js';
 
 const galleryFigure = document.querySelector(".gallery");
 
@@ -31,9 +30,10 @@ async function init() {
     afficheImages(ApiImages, galleryFigure);
     setupButtons(ApiImages, galleryFigure);
     modalButton();
+    formulaireButton();
     EmailButton();
     loginButton();    
-    swapModal();
+    swapModal();    
 }
 
 init();

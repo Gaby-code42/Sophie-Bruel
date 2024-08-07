@@ -1,8 +1,11 @@
 import { modalButton } from './croixmodal.js';
 
+
 const reponse = await fetch('http://localhost:5678/api/works');
 const ApiImages = await reponse.json();
 const modalWrapper = document.querySelector('.modal-wrapper')
+const fileInput = document.getElementById('photoUpload');
+
 
 export function afficheImages(images){
     
@@ -106,6 +109,7 @@ export function swapModal() {
         const showHideElements = document.querySelectorAll('.modal-ajout');
         showHideElements.forEach(element => {
             element.style.display = 'flex';
+
         });
     });
 
@@ -119,24 +123,8 @@ export function swapModal() {
                 element.style.display = 'none';
             });
             modalWrapper.style.height = '680px';
+             
         });
     }
 
-document.getElementById('photoUpload').addEventListener('change',function(event){
-    const clickImg = event.target.files[0];
-    const fileRead = new FileReader();
-    const changementImg=document.getElementById('changement-img')
-
-    fileRead.onload = function(e){
-        const imgAjoutModal = document.createElement('img')
-            imgAjoutModal.src = e.target.result;
-            changementImg.innerHTML='';
-            changementImg.appendChild(imgAjoutModal);
-            
-        }
-        if (clickImg) {
-            fileRead.readAsDataURL(clickImg);
-        }
-        }
-    )
     

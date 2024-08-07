@@ -1,6 +1,8 @@
 export function modalButton (){
 
-  let modal = null
+const changementImg = document.getElementById('changement-img');
+let originalContent = changementImg.innerHTML  
+let modal = null
   
   const openModal = function(e){
       e.preventDefault()
@@ -25,6 +27,7 @@ export function modalButton (){
       modal.querySelector('.js-modal-close').removeEventListener('click',closeModal)
       modal.querySelector('.js-modal-stop').removeEventListener('click',stopPropagation)
       modal = null
+      changementImg.innerHTML = originalContent;
   }
   
   const stopPropagation=function(e){
@@ -35,6 +38,4 @@ export function modalButton (){
     a.addEventListener('click',openModal)
     }
   )
-
-  }
-
+}
