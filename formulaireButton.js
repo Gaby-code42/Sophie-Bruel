@@ -14,13 +14,39 @@ export async function formulaireButton (){
     works.forEach(work => {
         uniqueCategories.add(work.category.name);
       });
-      
-    console.log(uniqueCategories)
 
-          
+    const categoriesArray = Array.from(uniqueCategories);  
+    
+    console.log(categoriesArray)
 
-    
-    
+    const containerSelect = document.querySelector('.form-catSelect')
+
+    const selectForm = document.createElement('select')
+    selectForm.id='category'
+    selectForm.name='category'
+    containerSelect.appendChild(selectForm)
+
+    const selectFunction = document.getElementById('category')
+
+    selectFunction.innerHTML=''
+
+    const defaultOption = document.createElement('option')
+    defaultOption.value = ''
+    defaultOption.text = ''
+    selectFunction.appendChild(defaultOption)
+
+    categoriesArray.forEach(category => {
+        const option = document.createElement('option')
+        option.value = category
+        option.text = category
+        selectFunction.appendChild(option)
+
+        selectFunction.addEventListener('change', async (event) => {
+            const selectedCategory = event.target.value
+            if(selectedCategory){console.log(selectedCategory)}
+        })
+    })
+
     const photoButton = document.querySelector('.photo-button')
 
     const inputImg = document.createElement('input')
@@ -55,14 +81,31 @@ export async function formulaireButton (){
         categoryOptions()
     }
 })
-
-//<input type="text" id="title" name="title">
     const titleButton = document.querySelector('.form-catTitle')
 
     const inputTitle = document.createElement('input')
     inputTitle.type = 'text'
-    inputTitle.id='title'
+    inputTitle.id = 'title'
     inputTitle.name = 'title'
     titleButton.appendChild(inputTitle)
+
+    inputTitle.addEventListener('change',async (event) =>{
+        const inputTitle = event.target.value
+        if(inputTitle){console.log(inputTitle)}
+
+    })
     
+    //<button type="submit" class="submit-button" id="form-validation">Valider</button>
+
+    const submitCase = document.querySelector('.form-submit')
+    const inputSummit = document.createElement('button')
+    inputSummit.type = 'submit'
+    inputSummit.classList.add('submit-button')
+    inputSummit.id = 'form-validation'
+    inputSummit.innerText = "Valider"
+    submitCase.appendChild(inputSummit)
+
+    function validation (){
+
+    }
 }
