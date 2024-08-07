@@ -1,5 +1,7 @@
+    
+    // Sert à ouvrir la modal //
+    
     export function modalButton (){
-
     const changementImg = document.getElementById('changement-img');
     let originalContent = changementImg.innerHTML  
     let modal = null
@@ -43,33 +45,11 @@
 const reponse = await fetch('http://localhost:5678/api/works');
 const ApiImages = await reponse.json();
 const modalWrapper = document.querySelector('.modal-wrapper')
-const fileInput = document.getElementById('photoUpload');
-
 
 export function afficheImages(images){
     
-    modalButton();    
-
-    const buttonReturn = document.createElement('button')
-    buttonReturn.innerHTML='<i class="fa-solid fa-arrow-left">'
-    buttonReturn.classList.add('js-modal-return','modal-ajout')
-    modalWrapper.appendChild(buttonReturn)
-
-    const btnClose = document.createElement('button')
-    btnClose.classList.add('js-modal-close')
-    btnClose.id='close-modal'
-    btnClose.innerHTML='<i class="fa-solid fa-xmark">'
-    modalWrapper.appendChild(btnClose)
-
-    const textModal = document.createElement('p')
-    textModal.innerText='Galerie photo'
-    modalWrapper.appendChild(textModal)
-    textModal.classList.add('galerie-photo','hidden-mod')
-
-    const modalImgList = document.createElement('div')
-    modalImgList.classList.add('modal-content','hidden-mod')
-    modalWrapper.appendChild(modalImgList)
-
+    const modalImgList = document.querySelector('.modal-content')
+    
     for (const user of images) {       
         
         const figureModal = document.createElement('div')
@@ -119,14 +99,7 @@ export function afficheImages(images){
             const reponseImages = await fetch('http://localhost:5678/api/works');
             const ApiImages = await reponseImages.json();
             afficheImages(ApiImages);
-    
     }
-    
-    const btnAjout = document.createElement('button')
-        btnAjout.classList.add('modal-button-ajout','hidden-mod')
-        btnAjout.innerText="Ajouter une photo"
-        modalWrapper.appendChild(btnAjout)
-
 }
 
 afficheImages(ApiImages)
@@ -138,6 +111,7 @@ export function swapModal() {
     
 
     buttonSwap.addEventListener('click', function() {
+        
         modalWrapper.style.height = '670px';
 
         const elementsToHide = document.querySelectorAll('.hidden-mod');
@@ -149,10 +123,15 @@ export function swapModal() {
         showHideElements.forEach(element => {
             element.style.display = 'flex';
 
+            
+
         });
     });
 
         buttonReturn.addEventListener('click', function() {
+
+            modalWrapper.style.height = '680px';
+
             const elementsToShow = document.querySelectorAll('.hidden-mod');
             elementsToShow.forEach(element => {
                 element.style.display = 'flex';
@@ -162,6 +141,8 @@ export function swapModal() {
                 element.style.display = 'none';
             });
             modalWrapper.style.height = '680px';
+
+            
              
         });
 
