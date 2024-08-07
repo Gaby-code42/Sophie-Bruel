@@ -1,10 +1,6 @@
-import {afficheImages} from './triage.js'
+import {afficheImages, setupButtons} from './triage.js'
 
-import {setupButtons} from './triage.js'
-
-import { swapModal} from './modal.js';
-
-import { modalButton } from './croixmodal.js';
+import { swapModal, modalButton} from './modal.js';
 
 import { formulaireButton } from './Ajoutprojet.js';
 
