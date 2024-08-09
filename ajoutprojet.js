@@ -8,6 +8,7 @@ let inputTitle = '';
 let isImageValid = false; 
 let isCategoryValid = false; 
 let isTitleValid = false; 
+let storedImage = null
 
 export async function formulaireButton() {
     const response = await fetch('http://localhost:5678/api/works');
@@ -15,12 +16,10 @@ export async function formulaireButton() {
 
     //formulaire categories//  je dois créer le label de facon dynamique 
 
-    const uniqueCategories = new Set();
+    const uniqueCategories = new Map();
     works.forEach(work => {
-        uniqueCategories.add(work.category.name);
+        uniqueCategories.set(work.category.id, work.category.name);
     });
-
-    const categoriesArray = Array.from(uniqueCategories);  
 
     const selectFunction = document.getElementById('category');
     selectFunction.innerHTML = '';
@@ -30,17 +29,21 @@ export async function formulaireButton() {
     defaultOption.text = '';
     selectFunction.appendChild(defaultOption);
 
-    categoriesArray.forEach(category => {
+    uniqueCategories.forEach((name, id) => {
         const option = document.createElement('option');
-        option.value = category;
-        option.text = category;
+        option.value = id;
+        option.text = name;
         selectFunction.appendChild(option);
     });
 
     selectFunction.addEventListener('change', (event) => {
         selectedCategory = event.target.value;
+
+        console.log('Selected Category ID:', selectedCategory);
+
         isCategoryValid = !!selectedCategory;
         checkFormCompletion();
+        
     });
 
     // formulaire titre // 
@@ -54,12 +57,13 @@ export async function formulaireButton() {
     });
 
     // formulaire Image //  
+    const imageContainer = document.getElementById('imageContainer')
     const changementImg = document.getElementById('changement-img')
     let inputImg = document.querySelector('.photo-upload')
     const selectedImage = document.getElementById('selectedImage')
-    const imageContainer = document.getElementById('imageContainer')
+    
 
-    let storedImage = null
+    
 
     inputImg.addEventListener('change', function(event){
         const file = event.target.files[0]
@@ -76,28 +80,19 @@ export async function formulaireButton() {
                 checkFormCompletion()
             }
             reader.readAsDataURL(file)
+            inputImg.value = ''
         } else {
             imageContainer.style.display = 'none'
-            changementImg.style.display= 'block' 
+            changementImg.style.display= 'flex' 
             isImageValid = false  
             checkFormCompletion()        
         }
     })
 
-    
-    
-
     selectedImage.addEventListener('click', () => {
         photoUpload.click(); 
     });
 
-    function getStoredImage() {
-        return storedImage;
-    }
-
-    
-
-    
     // permet de valider mon if //
 
     function checkFormCompletion() {
@@ -124,32 +119,21 @@ export async function formulaireButton() {
         async function submitForm() {
 
             const token = sessionStorage.getItem('authToken');
-
-            const imageFile = inputImg.files[0];
-             
-            console.log(imageFile)
-
-            const formPost = {
-                title: inputTitle,
-                category: selectedCategory,
-                image: imageFile,
-            }
-
-
-
-            const ChargeUtileAjout = JSON.stringify(formPost)
-        
-             {
+            const formData = new FormData();        
+            
+            formData.append('title', inputTitle);
+            formData.append('category', selectedCategory);
+            formData.append('image', storedImage);
+            
                 const response = await fetch('http://localhost:5678/api/works', {
-                        method: 'POST',
+                        method: 'PATCH',
                         headers:{
                             'Authorization': `Bearer ${token}`
                         },
-                        body: ChargeUtileAjout
+                        body: formData
 
                 });
                 const data = await response.json();
                 console.log(data);
                 }
 }    
-}

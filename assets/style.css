@@ -314,7 +314,7 @@ footer nav ul {
 	display:none;
 }
 
-.js-modal-close {
+.js-modal-close, .js-modal-close-ajout {
 	position: absolute;
 	font-size: 12px;
 	right: 24px;
@@ -461,6 +461,10 @@ footer nav ul {
 	bottom:70px;
     width: calc(100% - 210px); /* 2 * 105px for left and right padding */
     margin: 0 auto;
+}
+
+.admin-action{
+	margin-bottom: 30px;
 }
 
 .modal-ajout{

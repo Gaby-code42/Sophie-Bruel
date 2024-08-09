@@ -2,8 +2,8 @@
     // Sert à ouvrir la modal //
     
     export function modalButton (){
-    const changementImg = document.getElementById('changement-img');
-    let originalContent = changementImg.innerHTML  
+    const changementImg = document.getElementById('changement-img')
+    const imageContainer = document.getElementById('imageContainer')  
     let modal = null
       
       const openModal = function(e){
@@ -14,23 +14,25 @@
           target.setAttribute('aria-modal', 'true')
           modal = target
           modal.addEventListener('click',closeModal)
+          modal.querySelector('.js-modal-close-ajout').addEventListener('click',closeModal)
           modal.querySelector('.js-modal-close').addEventListener('click',closeModal)
           modal.querySelector('.js-modal-stop').addEventListener('click',stopPropagation)    
           
       }
       
       const closeModal = function(e){
-          if (modal === null) return
-          e.preventDefault()
-          modal.style.display = "none"
-          modal.setAttribute('aria-hidden','true')
-          modal.removeAttribute('aria-modal')
-          modal.removeEventListener('click',closeModal)
-          modal.querySelector('.js-modal-close').removeEventListener('click',closeModal)
-          modal.querySelector('.js-modal-stop').removeEventListener('click',stopPropagation)
-          modal = null
-          changementImg.innerHTML = originalContent;
-      }
+        if (modal === null) return
+        e.preventDefault()
+        modal.style.display = "none"
+        modal.setAttribute('aria-hidden','true')
+        modal.removeAttribute('aria-modal')
+        modal.removeEventListener('click',closeModal)
+        modal.querySelector('.js-modal-close').removeEventListener('click',closeModal)
+        modal.querySelector('.js-modal-stop').removeEventListener('click',stopPropagation)
+        modal = null
+        imageContainer.style.display = 'none'
+        changementImg.style.display= 'flex' 
+        }
       
       const stopPropagation=function(e){
         e.stopPropagation()
@@ -117,11 +119,13 @@ export function swapModal() {
         const elementsToHide = document.querySelectorAll('.hidden-mod');
         elementsToHide.forEach(element => {
             element.style.display = 'none';
+            
         });
-
+        
+       
         const showHideElements = document.querySelectorAll('.modal-ajout');
         showHideElements.forEach(element => {
-            element.style.display = 'flex';
+            element.style.display = 'flex';           
         });
     });
 
@@ -139,7 +143,10 @@ export function swapModal() {
             });
             modalWrapper.style.height = '680px';
 
-            
+            const changementImg = document.getElementById('changement-img')
+            const imageContainer = document.getElementById('imageContainer')
+            imageContainer.style.display = 'none'
+            changementImg.style.display= 'flex'           
              
         });
 
