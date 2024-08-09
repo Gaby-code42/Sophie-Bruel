@@ -23,11 +23,11 @@ async function init() {
     
     afficheImages(ApiImages, galleryFigure);
     setupButtons(ApiImages, galleryFigure);
+    loginButton(); 
+    swapModal(); 
     modalButton();
     formulaireButton();
-    EmailButton();
-    loginButton();    
-    swapModal();    
+    EmailButton();      
 }
 
 init();

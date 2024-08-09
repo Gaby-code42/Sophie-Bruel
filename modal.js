@@ -122,9 +122,6 @@ export function swapModal() {
         const showHideElements = document.querySelectorAll('.modal-ajout');
         showHideElements.forEach(element => {
             element.style.display = 'flex';
-
-            
-
         });
     });
 
@@ -134,7 +131,7 @@ export function swapModal() {
 
             const elementsToShow = document.querySelectorAll('.hidden-mod');
             elementsToShow.forEach(element => {
-                element.style.display = 'flex';
+                element.style.display = 'block';
             });
             const elementsToHide = document.querySelectorAll('.modal-ajout');
             elementsToHide.forEach(element => {

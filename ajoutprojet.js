@@ -1,10 +1,9 @@
-const changementImg = document.getElementById('changement-img');
-let originalContent = changementImg.innerHTML;
+
 
 //variable checking//
 
 let selectedCategory = '';
-let imgAjoutModal = null;
+let selectedImage = null;
 let inputTitle = '';
 let isImageValid = false; 
 let isCategoryValid = false; 
@@ -22,12 +21,6 @@ export async function formulaireButton() {
     });
 
     const categoriesArray = Array.from(uniqueCategories);  
-
-    const containerSelect = document.querySelector('.form-catSelect');
-    const selectForm = document.createElement('select');
-    selectForm.id = 'category';
-    selectForm.name = 'category';
-    containerSelect.appendChild(selectForm);
 
     const selectFunction = document.getElementById('category');
     selectFunction.innerHTML = '';
@@ -50,14 +43,9 @@ export async function formulaireButton() {
         checkFormCompletion();
     });
 
-    // formulaire titre //  je dois créer le label de facon dynamique 
+    // formulaire titre // 
 
-    const titleButton = document.querySelector('.form-catTitle');
-    const inputTitleElement = document.createElement('input');
-    inputTitleElement.type = 'text';
-    inputTitleElement.id = 'title';
-    inputTitleElement.name = 'title';
-    titleButton.appendChild(inputTitleElement);
+    let inputTitleElement = document.getElementById('title')
 
     inputTitleElement.addEventListener('change', (event) => {
         inputTitle = event.target.value;
@@ -65,70 +53,71 @@ export async function formulaireButton() {
         checkFormCompletion();
     });
 
+    // formulaire Image //  
+    const changementImg = document.getElementById('changement-img')
+    let inputImg = document.querySelector('.photo-upload')
+    const selectedImage = document.getElementById('selectedImage')
+    const imageContainer = document.getElementById('imageContainer')
+
+    let storedImage = null
+
+    inputImg.addEventListener('change', function(event){
+        const file = event.target.files[0]
+
+        if(file){
+            const reader = new FileReader()
+
+            reader.onload = (e) => {
+                selectedImage.src = e.target.result;
+                imageContainer.style.display ='block'
+                changementImg.style.display='none'
+                storedImage = file
+                isImageValid = true
+                checkFormCompletion()
+            }
+            reader.readAsDataURL(file)
+        } else {
+            imageContainer.style.display = 'none'
+            changementImg.style.display= 'block' 
+            isImageValid = false  
+            checkFormCompletion()        
+        }
+    })
+
+    
+    
+
+    selectedImage.addEventListener('click', () => {
+        photoUpload.click(); 
+    });
+
+    function getStoredImage() {
+        return storedImage;
+    }
+
+    
+
+    
     // permet de valider mon if //
 
     function checkFormCompletion() {
         const submitButton = document.getElementById('form-validation');
         if (isImageValid && isCategoryValid && isTitleValid) {
             submitButton.disabled = false;
+            inputSubmit.style.backgroundColor = '#1D6154';
         } else {
-            submitButton.disabled = true;
+            submitButton.disabled = true;            
         }
     }
-
-    // formulaire Image //  je dois créer le label de facon dynamique 
-
-    const photoButton = document.querySelector('.photo-button');
-    const inputImg = document.createElement('input');
-    inputImg.type = 'file';
-    inputImg.accept = '.jpg, .jpeg, .png';
-    inputImg.classList.add('photo-upload');
-    inputImg.id = 'photoUpload';
-    photoButton.appendChild(inputImg);
-
-    inputImg.addEventListener('change', function(event) {
-        const clickImg = event.target.files[0];
-        const fileRead = new FileReader();
-
-        fileRead.onload = function(e) {
-            imgAjoutModal = document.createElement('img');
-            imgAjoutModal.src = e.target.result;
-            changementImg.innerHTML = '';
-            changementImg.appendChild(imgAjoutModal);
-
-            imgAjoutModal.addEventListener('click', function() {
-                inputImg.click();
-            });
-
-            isImageValid = !!imgAjoutModal.src; // permet de transformer imgAjoutModal.scr en booleen . bon a savoir //
-
-            
-
-            checkFormCompletion();
-        };
-
-        if (clickImg) {
-            fileRead.readAsDataURL(clickImg);
-        } else {
-            changementImg.innerHTML = originalContent;
-            formulaireButton();
-        }
-    });
     
     //bouton submit//
 
-    const submitCase = document.querySelector('.form-submit');
-    const inputSubmit = document.createElement('button');
-    inputSubmit.type = 'submit';
-    inputSubmit.classList.add('submit-button');
-    inputSubmit.id = 'form-validation';
-    inputSubmit.innerText = "Valider";
-    inputSubmit.disabled = true;
-    submitCase.appendChild(inputSubmit);
+    let  inputSubmit = document.querySelector('.submit-button')
 
     inputSubmit.addEventListener('click', async () => {
         if (isImageValid && isCategoryValid && isTitleValid) {
             await submitForm();
+            console.log('click')
         }
     })
    

@@ -42,32 +42,48 @@
 		<h2>Mes Projets</h2>
 		<div class="admin-action"></div>
 		    <aside id="modal1" class="modal" aria-hidden="true" style="display:none;">
-			    <div class="modal-wrapper js-modal-stop">
-					<button class="js-modal-return modal-ajout"><i class="fa-solid fa-arrow-left"></i></button>
-					<button class="js-modal-close"><i class="fa-solid fa-xmark"></i></button>
-					<p class="galerie-photo hidden-mod">Galerie photo</p>
-					<div class="modal-content hidden-mod">
-
+			    <div class="modal-wrapper js-modal-stop" >
+					<div class='hidden-mod'>
+					    <button class="js-modal-close"><i class="fa-solid fa-xmark"></i></button>
+					    <p class="galerie-photo">Galerie photo</p>
+					<div class="modal-content ">
+						<!-- image -->
 					</div>
-					<button class="modal-button-ajout hidden-mod">Ajouter une photo</button>
+					    <button class="modal-button-ajout">Ajouter une photo</button>
+					</div>
 
 					<div class="form-part modal-ajout" id="form-part">
-
-						<div class="form-part modal-ajout" id="form-part" style="display: none;">
-							
+					<button class="js-modal-return modal-ajout"><i class="fa-solid fa-arrow-left"></i></button>
+					<button class="js-modal-close"><i class="fa-solid fa-xmark"></i></button>							
 					<p class='photo-ajout'>Ajout photo</p>
-					<form class='photo-button' id="changement-img">
+					<form id="uploadForm">
+					<div class='photo-button' id="changement-img">
 						<p><i class="fa-regular fa-image" style="color: #a3a3a3;"></i></p>
 						<label for="photoUpload" class="upload-button">+ Ajouter photo</label>
+						<input type="file" accept=" .jpg, .jpeg, .png" class="photo-upload" id="photoUpload">
 						<p class="under-uploadButton">jpg, png : 4mo max</p>
+					</div>
+					<div id="imageContainer" style="display: none;">
+						<img id="selectedImage">
+					</div>
+
 					</form>
+					<div id="imageContainer" style="display: none;">
+						<img id="selectedImage" style="max-width: 100%; height: auto;">
+					</div>
 					<div class="form-catTitle">
-						<label for="title">Titre :</label>  
+						<label for="title">Titre :</label>
+						<input type="text" id="title" name="title">
 					</div>
 					<div class="form-catTitle form-catSelect">
-						<label for="category">Catégorie :</label>		
+						<label for="category">Catégorie :</label>
+						<select id="category" name="category">
+						</select>
 					</div>
-					    <div class="form-catTitle form-submit">    
+					    <div class="form-catTitle form-submit">
+							<button type="submit" class="submit-button" id="form-validation" disabled>
+								Valider
+							</button>    
 				        </div>
 				    </div>
 			    </div>
