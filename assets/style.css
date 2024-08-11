@@ -155,9 +155,6 @@ ul{
 	background-color: #1D6154;
 	color:white;
 }
-	
-
-
 
 .gallery {
 	width: 100%;
@@ -220,10 +217,23 @@ footer nav ul {
 	margin: 2em
 }
 
+.title-projet{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 20px;
+}
+
+#text-projet{
+	margin-bottom: 30px;
+}
+
+/*login*/
+
 .hidden {
 	display: none;
 }
-/*css caché*/
+
 .title-log{
 	margin-top: 200px;
 	display: flex;
@@ -240,17 +250,6 @@ footer nav ul {
 	display: flex;
 }
 
-.title-projet{
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	gap: 20px;
-}
-
-#text-projet{
-	margin-bottom: 30px;
-}
-
 .logon{
 	display: flex;
 	flex-direction: column;
@@ -263,7 +262,6 @@ footer nav ul {
 	text-decoration: underline;
 	margin-bottom: 370px;
 }
-
 
 #password-login,#email-login{
 	width: 379px;
@@ -290,7 +288,7 @@ footer nav ul {
 	left:0;
 	width: 100%;
 	height: 100%;
-	background-color: rgba(0, 0, 0, 0.5);
+	background-color: rgba(0, 0, 0, 0.3);
 }
 
 .modal-wrapper{
@@ -321,10 +319,6 @@ footer nav ul {
 	top:24px;
 	border:none;
 	background-color: white;
-	cursor: pointer;
-}
-
-.submit-button{
 	cursor: pointer;
 }
 
@@ -369,13 +363,18 @@ footer nav ul {
 	cursor: pointer;
 }
 
-
 .image-container {
 	display: flex;
 	position: relative;
 	width: 76px;
 	height: 102px;
 	margin-bottom: 30px;
+}
+
+div #imageContainer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .modal-button-remove{
@@ -425,23 +424,6 @@ footer nav ul {
 	border-radius: 5px;
   }
   
-.upload-button{
-	display: flex;
-    align-items: center;
-	justify-content: center;
-	margin-left: auto;
-	margin-right: auto;  
-	padding: 11px 33px;
-    background-color: #CBD6DC;
-    color: #306685;
-    border: none;
-    border-radius: 50px; 
-    font-size: 14px;
-}
-
-.photo-button input[type="file"] {
-	display: none; /* Cacher l'input de type file par défaut */
-}
 .form-part{
 	display: flex;
 	position: relative;
@@ -450,6 +432,10 @@ footer nav ul {
 	align-items: center;
 	padding: 0px 105px;
 	gap:30px;
+}
+
+#uploadForm{
+	width: 100%;
 }
 
 .form-part::before{
@@ -474,6 +460,7 @@ footer nav ul {
 .form-catTitle{
 	display: flex;
 	flex-direction: column;
+	gap:10px
 }
 
 #title{
@@ -500,6 +487,7 @@ footer nav ul {
 	border:none;
 	padding: 10.38px 98.25px;
 	margin-top: 50px;
+	cursor: pointer;
 }
 
 .photo-ajout{
@@ -511,6 +499,24 @@ footer nav ul {
 	margin-bottom: 30px;
 }
 
+.upload-button{
+	display: flex;
+    align-items: center;
+	justify-content: center;
+	margin-left: auto;
+	margin-right: auto;  
+	padding: 11px 33px;
+    background-color: #CBD6DC;
+    color: #306685;
+    border: none;
+    border-radius: 50px; 
+    font-size: 14px;
+}
+
+.photo-button input[type="file"] {
+	display: none; /* Cacher l'input de type file par défaut */
+}
+
 .photo-button{
 	background-color: #E8F1F6;
 	height: 169px;
@@ -518,11 +524,7 @@ footer nav ul {
 	display: flex;
 	flex-direction: column;
 	gap:10px;
-}
-
-#selectedImage {
-    max-width: 100%; 
-    height: 169px; 
+	border-radius: 3px;
 }
 
 .photo-button img {
@@ -530,4 +532,9 @@ footer nav ul {
     max-height: 100%;
     object-fit: contain; /* Assurez-vous que l'image s'ajuste correctement */
     display: block;
+}
+
+#selectedImage {
+    max-width: 100%; 
+    height: 169px; 
 }

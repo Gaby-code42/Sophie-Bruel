@@ -31,6 +31,8 @@ export function setupButtons(images, galleryFigure) {
             boutonHover.classList.add('bouton-active');
         });
     });
+
+    boutonTous.click()
 }
 
 const galleryFigure = document.querySelector(".gallery");

@@ -3,7 +3,6 @@
 //variable checking//
 
 let selectedCategory = '';
-let selectedImage = null;
 let inputTitle = '';
 let isImageValid = false; 
 let isCategoryValid = false; 
@@ -73,7 +72,7 @@ export async function formulaireButton() {
 
             reader.onload = (e) => {
                 selectedImage.src = e.target.result;
-                imageContainer.style.display ='block'
+                imageContainer.style.display ='flex'
                 changementImg.style.display='none'
                 storedImage = file
                 isImageValid = true
@@ -126,7 +125,7 @@ export async function formulaireButton() {
             formData.append('image', storedImage);
             
                 const response = await fetch('http://localhost:5678/api/works', {
-                        method: 'PATCH',
+                        method: 'POST',
                         headers:{
                             'Authorization': `Bearer ${token}`
                         },
@@ -135,5 +134,7 @@ export async function formulaireButton() {
                 });
                 const data = await response.json();
                 console.log(data);
+
+                window.location.reload();
                 }
 }    

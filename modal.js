@@ -48,9 +48,12 @@ const reponse = await fetch('http://localhost:5678/api/works');
 const ApiImages = await reponse.json();
 const modalWrapper = document.querySelector('.modal-wrapper')
 
+
+
 export function afficheImages(images){
     
     const modalImgList = document.querySelector('.modal-content')
+    modalImgList.innerHTML = ''
     
     for (const user of images) {       
         
@@ -100,6 +103,7 @@ export function afficheImages(images){
     
             const reponseImages = await fetch('http://localhost:5678/api/works');
             const ApiImages = await reponseImages.json();
+            
             afficheImages(ApiImages);
     }
 }
