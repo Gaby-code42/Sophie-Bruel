@@ -45,17 +45,17 @@ export function afficheImages(images){
     galleryFigure.textContent=""
     
 
-    for (const user of images) {
+    for (const image of images) {
 
         const figure = document.createElement('figure')
         galleryFigure.appendChild(figure)
 
         const imgFigure = document.createElement('img');
-        imgFigure.src = user.imageUrl;
+        imgFigure.src = image.imageUrl;
         figure.appendChild(imgFigure)
     
         const figureElement = document.createElement("p");
-        figureElement.innerText = user.title;
+        figureElement.innerText = image.title;
         figure.appendChild(figureElement)
         }
 }
