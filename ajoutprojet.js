@@ -69,7 +69,7 @@ export async function formulaireButton() {
 
         if(file){
             const reader = new FileReader()
-
+            
             reader.onload = (e) => {
                 selectedImage.src = e.target.result;
                 imageContainer.style.display ='flex'

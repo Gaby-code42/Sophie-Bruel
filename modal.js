@@ -110,6 +110,8 @@ export function afficheImages(images){
 
 afficheImages(ApiImages)
 
+/* passer de la modal 1 à la 2*/
+
 export function swapModal() {
        
     const buttonSwap = document.querySelector('.modal-button-ajout');
