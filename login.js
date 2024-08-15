@@ -33,8 +33,14 @@
           .then(response => {
               if (response.status === 200) {
                 return response.json();
-              }  else {  
-                throw new Error('Une erreur s\'est produite. Veuillez réessayer plus tard.');
+              } else if (response.status === 401) {
+                document.getElementById('error-message').innerText = 'Erreur dans l’identifiant ou le mot de passe';;
+              } else if (response.status === 404) {
+                document.getElementById('error-message').innerText = 'Erreur dans l’identifiant ou le mot de passe';
+              } else {
+  
+  
+                throw new Error('Erreur dans l’identifiant ou le mot de passe.');
               }
             }) 
             .then(data => {
@@ -46,6 +52,15 @@
   
       })
   }
+
+export function loginButton (){
+    const boutonLogin = document.querySelector('#btn-login')
+
+    boutonLogin.addEventListener('click',function(){
+        document.getElementById('before-login').style.display ='none';
+        document.getElementById('login').style.display = 'block';
+    })
+}
 
 function connexionSucces(data, token){
     document.getElementById('before-login').style.display ='block';
@@ -60,15 +75,6 @@ function connexionSucces(data, token){
     }
   })
 
-  export function loginButton (){
-    const boutonLogin = document.querySelector('#btn-login')
-
-    boutonLogin.addEventListener('click',function(){
-        document.getElementById('before-login').style.display ='none';
-        document.getElementById('login').style.display = 'block';
-    })
-}
-
     function editButton(){
     let editBtn = document.createElement("a")
     editBtn.href="#modal1" 
@@ -79,4 +85,3 @@ function connexionSucces(data, token){
     const adminAction = document.querySelector('.admin-action')
     adminAction.appendChild(editBtn)
   }
-
