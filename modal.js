@@ -55,7 +55,7 @@ export function afficheImages(images){
     const modalImgList = document.querySelector('.modal-content')
     modalImgList.innerHTML = ''
     
-    for (const user of images) {       
+    for (const image of images) {       
         
         const figureModal = document.createElement('div')
         figureModal.classList.add('image-container','hidden-mod')
@@ -67,14 +67,14 @@ export function afficheImages(images){
         figureModal.appendChild(btnSupprimer)
                 
         const imageModal = document.createElement('img');
-        imageModal.src = user.imageUrl
-        imageModal.id = user.id
+        imageModal.src = image.imageUrl
+        imageModal.id = image.id
         imageModal.classList.add('image-modal','hidden-mod')
         figureModal.appendChild(imageModal)     
 
         btnSupprimer.addEventListener('click',function(){
             console.log('click')
-            supprimerImage(user.id);
+            supprimerImage(image.id);
         })
     }
 
