@@ -47,15 +47,6 @@
       })
   }
 
-export function loginButton (){
-    const boutonLogin = document.querySelector('#btn-login')
-
-    boutonLogin.addEventListener('click',function(){
-        document.getElementById('before-login').style.display ='none';
-        document.getElementById('login').style.display = 'block';
-    })
-}
-
 function connexionSucces(data, token){
     document.getElementById('before-login').style.display ='block';
     document.getElementById('login').style.display = 'none';
@@ -69,6 +60,15 @@ function connexionSucces(data, token){
     }
   })
 
+  export function loginButton (){
+    const boutonLogin = document.querySelector('#btn-login')
+
+    boutonLogin.addEventListener('click',function(){
+        document.getElementById('before-login').style.display ='none';
+        document.getElementById('login').style.display = 'block';
+    })
+}
+
     function editButton(){
     let editBtn = document.createElement("a")
     editBtn.href="#modal1" 
@@ -79,3 +79,4 @@ function connexionSucces(data, token){
     const adminAction = document.querySelector('.admin-action')
     adminAction.appendChild(editBtn)
   }
+
