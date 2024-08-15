@@ -2,11 +2,13 @@ import {afficheImages, setupButtons} from './triage.js'
 
 import { swapModal, modalButton} from './modal.js';
 
-import { formulaireButton } from './Ajoutprojet.js';
+import { formulaireButton } from './ajoutprojet.js';
 
 import {EmailButton, loginButton} from './login.js'
 
 const galleryFigure = document.querySelector(".gallery");
+const modalImgList = document.querySelector('.modal-content');
+
 
 //code pour les images//
 async function fetchImages(){
@@ -22,7 +24,10 @@ async function init() {
     const ApiImages = await fetchImages();
     
     afficheImages(ApiImages, galleryFigure);
+    afficheImages(ApiImages,modalImgList)
+
     setupButtons(ApiImages, galleryFigure);
+
     loginButton(); 
     swapModal(); 
     modalButton();

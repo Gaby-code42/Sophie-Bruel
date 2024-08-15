@@ -66,8 +66,11 @@ export async function formulaireButton() {
 
     inputImg.addEventListener('change', function(event){
         const file = event.target.files[0]
+        /*j'ai ajouter une taille max*/
+        const maxSize = 4 * 1024 * 1024;
 
         if(file){
+            if(file.size <= maxSize){ 
             const reader = new FileReader()
             
             reader.onload = (e) => {
@@ -81,12 +84,13 @@ export async function formulaireButton() {
             reader.readAsDataURL(file)
             inputImg.value = ''
         } else {
+            alert("La taille de l'image est trop grande. Veuillez choisir une image de moins de 4 Mo.");  /*on peut rajouter une alert*/
             imageContainer.style.display = 'none'
             changementImg.style.display= 'flex' 
             isImageValid = false  
             checkFormCompletion()        
         }
-    })
+    }})
 
     selectedImage.addEventListener('click', () => {
         photoUpload.click(); 

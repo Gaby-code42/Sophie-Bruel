@@ -1,7 +1,7 @@
     
     // Sert à ouvrir la modal //
     
-    export function modalButton (){
+export function modalButton (){
     const changementImg = document.getElementById('changement-img')
     const imageContainer = document.getElementById('imageContainer')  
     let modal = null
@@ -41,8 +41,8 @@
       document.querySelectorAll('.js-modal').forEach(a=>{
         a.addEventListener('click',openModal)
         }
-      )
-    }
+    )
+}
 
 const reponse = await fetch('http://localhost:5678/api/works');
 const ApiImages = await reponse.json();
@@ -73,10 +73,11 @@ export function afficheImages(images){
         figureModal.appendChild(imageModal)     
 
         btnSupprimer.addEventListener('click',function(){
-            console.log('click')
             supprimerImage(image.id);
         })
     }
+}
+afficheImages(ApiImages)
 
     //suppression image//
 
@@ -92,7 +93,7 @@ export function afficheImages(images){
             });
     
             if (reponseDelete.ok) {
-                console.log('Image supprimée avec succès');
+                console.log('Image supprimée avec succès')                
             } else if (reponseDelete.status === 401) {
                 console.log('Non autorisé');
             } else if (reponseDelete.status === 404) {
@@ -100,15 +101,8 @@ export function afficheImages(images){
             } else {
                 console.log('Erreur lors de la suppression de l\'image');
             }
-    
-            const reponseImages = await fetch('http://localhost:5678/api/works');
-            const ApiImages = await reponseImages.json();
-            
-            afficheImages(ApiImages);
+            window.location.reload();
     }
-}
-
-afficheImages(ApiImages)
 
 /* passer de la modal 1 à la 2*/
 
