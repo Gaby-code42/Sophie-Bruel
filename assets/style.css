@@ -52,6 +52,7 @@ body {
 	margin:auto;
 	font-family: 'Work Sans' ;
 	font-size: 14px;
+	padding: 0px 264px;
 }
 header {
 	display: flex;
@@ -101,14 +102,15 @@ li:hover {
 #introduction {
 	display: flex;
 	align-items: center;
+	gap:38px;
+	margin-bottom:140px;
 }
 #introduction figure {
 	flex: 1
 }
 #introduction img {
 	display: block;
-	margin: auto;
-	width: 80%;
+	width: 474px;
 }
 
 #introduction article {
@@ -160,13 +162,13 @@ ul{
 	width: 100%;
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
-	grid-column-gap: 20px;
-	grid-row-gap: 20px;
+	grid-column-gap: 18px;
+	grid-row-gap: 15px;
 }
 
 .gallery img {
-	width: 100%;
-	height: 100%;
+	width: 304px;
+	height: 407px;
 	object-fit: cover;
 }
 

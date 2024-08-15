@@ -48,7 +48,9 @@ export function afficheImages(images){
     for (const image of images) {
 
         const figure = document.createElement('figure')
+        figure.classList.add('figureHtml')
         galleryFigure.appendChild(figure)
+
 
         const imgFigure = document.createElement('img');
         imgFigure.src = image.imageUrl;
