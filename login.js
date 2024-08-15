@@ -9,8 +9,7 @@
               email:event.target.querySelector("[name=email]").value,
               password:event.target.querySelector("[name=password]").value,
           };
-          console.log(log);
-  
+            
           const emailRegex=/^[a-z0-9._-]+@[a-z0-9.-]+\.[a-z]/;;
           const passwordRegex=/[a-z0-9._-]/;
   
@@ -53,15 +52,6 @@
       })
   }
 
-export function loginButton (){
-    const boutonLogin = document.querySelector('#btn-login')
-
-    boutonLogin.addEventListener('click',function(){
-        document.getElementById('before-login').style.display ='none';
-        document.getElementById('login').style.display = 'block';
-    })
-}
-
 function connexionSucces(data, token){
     document.getElementById('before-login').style.display ='block';
     document.getElementById('login').style.display = 'none';
@@ -74,6 +64,15 @@ function connexionSucces(data, token){
       editButton();
     }
   })
+
+  export function loginButton (){
+    const boutonLogin = document.querySelector('#btn-login')
+
+    boutonLogin.addEventListener('click',function(){
+        document.getElementById('before-login').style.display ='none';
+        document.getElementById('login').style.display = 'block';
+    })
+}
 
     function editButton(){
     let editBtn = document.createElement("a")
