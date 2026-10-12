@@ -2,7 +2,7 @@
 
 Front-end dynamique du portfolio d'une architecte d'intérieur, écrit en
 JavaScript natif et branché sur une API REST. C'est un projet de la formation
-Intégrateur web d'OpenClassrooms.
+Développeur Web d'OpenClassrooms.
 
 ## Fonctionnalités
 
